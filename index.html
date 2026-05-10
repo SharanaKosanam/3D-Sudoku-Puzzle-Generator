@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudoku Puzzle Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="game-panel" aria-label="Sudoku puzzle generator">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Puzzle Generator</p>
+          <h1>Sudoku</h1>
+        </div>
+        <div class="stats" aria-label="Game status">
+          <div>
+            <span id="mistakes">0</span>
+            <small>Mistakes</small>
+          </div>
+          <div>
+            <span id="score">1000</span>
+            <small>Score</small>
+          </div>
+          <div>
+            <span id="timer">00:00</span>
+            <small>Time</small>
+          </div>
+        </div>
+      </header>
+
+      <div class="stage-wrap">
+        <div class="tilt-help">Drag the board to tilt it. Shift + drag to move it.</div>
+        <div class="scene" id="scene" aria-live="polite">
+          <div class="board3d" id="board3d">
+            <div class="board-face" id="board" role="grid" aria-label="Sudoku board"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="icon-button" id="rotateLeft" type="button" aria-label="Rotate left" title="Rotate left">
+          <span aria-hidden="true">↺</span>
+        </button>
+        <button class="icon-button" id="rotateRight" type="button" aria-label="Rotate right" title="Rotate right">
+          <span aria-hidden="true">↻</span>
+        </button>
+        <label class="select-wrap" for="difficulty">
+          <span>Level</span>
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <button class="text-button" id="resetView" type="button">Reset View</button>
+        <button class="text-button" id="checkBoard" type="button">Check</button>
+        <button class="text-button" id="hint" type="button">Hint</button>
+        <button class="text-button" id="solvePuzzle" type="button">Solve</button>
+        <button class="text-button" id="restartGame" type="button">Restart</button>
+        <button class="text-button primary" id="newGame" type="button">New Game</button>
+      </div>
+    </section>
+
+    <aside class="side-panel" aria-label="Sudoku controls">
+      <div class="selected-card">
+        <span>Selected</span>
+        <strong id="selectedReadout">None</strong>
+      </div>
+      <div class="selected-card">
+        <span>Difficulty</span>
+        <strong id="difficultyReadout">Medium</strong>
+      </div>
+      <div class="number-pad" id="numberPad" aria-label="Number pad"></div>
+      <button class="clear-button" id="clearCell" type="button">Clear Cell</button>
+      <div class="message" id="message">Choose an empty square to begin.</div>
+    </aside>
+  </main>
+
+  <div class="win-modal" id="winModal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+      <p class="eyebrow">Puzzle Complete</p>
+      <h2 id="winTitle">Clean solve.</h2>
+      <p id="winStats">You finished the puzzle.</p>
+      <button class="text-button primary" id="playAgain" type="button">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
